@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>openAI Node.js server</title>
+</head>
+<body>
+    <h1 id="display"></h1>
+    <input id="message" type="text"/>
+    <button onclick="getSound()">API요청</button>
+    <script>
+        async function getSound() {
+        const message = document.getElementById('message').value;
+        try {
+            const response = await fetch(`http://localhost:8000/${message}`);
+            const data = await response.json();
+            console.log(data);
+            } catch (error) {
+                console.error('Error:', error);
+            }
+        }
+    </script>
+</body>
+</html>
